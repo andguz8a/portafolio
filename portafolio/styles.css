@@ -1,0 +1,394 @@
+/* :root se usa para declarar variables globales de CSS
+   Estas variables se pueden usar en todo el archivo */
+:root {
+    --color-background-base: #000000;      /* Color de fondo principal */
+    --color-primary-light: #00eaff;         /* Color principal (azul claro) */
+    --color-secondary-accent: #ff9900;      /* Color secundario (naranja) */
+    --color-module-dark: #1a1a1a;           /* Fondo oscuro para secciones */
+    --color-text-main: #f0f0f0;              /* Color principal del texto */
+    --color-text-muted: #555555;             /* Color de texto más suave */
+    --border-line: 1px solid var(--color-text-muted); /* Borde reutilizable */
+    --font-header: 'Rajdhani', sans-serif;   /* Fuente para títulos */
+    --font-body: 'Space Mono', monospace;    /* Fuente para el texto */
+}
+
+
+/* Selector universal
+   Quita márgenes y paddings por defecto del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Hace que el padding no aumente el tamaño */
+}
+
+
+/* Estilos generales del body (toda la página) */
+body {
+    background-color: var(--color-background-base); /* Fondo negro */
+    color: var(--color-text-main);                   /* Color del texto */
+    font-family: var(--font-body);                   /* Fuente principal */
+    line-height: 1.6;                                /* Espacio entre líneas */
+
+    /* Estas líneas crean un fondo con cuadricula */
+    background-image: 
+        linear-gradient(to right, var(--color-text-muted) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--color-text-muted) 1px, transparent 1px);
+
+    background-size: 30px 30px; /* Tamaño de cada cuadro */
+    background-blend-mode: multiply; /* Mezcla el fondo con el color */
+}
+
+
+/* Estilos comunes para h1, h2 y h3 */
+h1, h2, h3 {
+    font-family: var(--font-header); /* Fuente diferente al texto normal */
+    text-transform: uppercase;       /* Texto en mayúsculas */
+    letter-spacing: 2px;             /* Espacio entre letras */
+}
+
+
+/* Estilo específico para h1 */
+h1 {
+    font-size: 2.2em;                        /* Tamaño del título */
+    color: var(--color-primary-light);       /* Color azul */
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.6); /* Efecto de brillo */
+}
+
+
+/* Estilo para h2 */
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 25px; /* Espacio debajo */
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-secondary-accent); /* Línea abajo */
+    color: var(--color-secondary-accent);
+}
+
+
+/* Estilo para h3 */
+h3 {
+    font-size: 1.3em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: var(--color-primary-light);
+}
+
+
+/* Header o menú principal */
+#Main-menu {
+    background: rgba(0, 0, 0, 0.9); /* Fondo semi transparente */
+    padding: 20px 5%;
+    display: flex;                  /* Flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre logo y menú */
+    align-items: center;            /* Centrado vertical */
+    border-bottom: 3px double var(--color-primary-light);
+}
+
+
+/* Lista del menú de navegación */
+nav ul {
+    list-style: none; /* Quita los puntos */
+    display: flex;    /* Coloca los items en fila */
+}
+
+
+/* Estilos de los links del menú */
+nav ul li a {
+    text-decoration: none; /* Quita subrayado */
+    color: var(--color-text-main);
+    font-family: var(--font-header);
+    margin-left: 20px;
+    padding: 8px 12px;
+    transition: all 0.3s ease; /* Animación suave */
+    border: 1px solid transparent;
+}
+
+
+/* Efecto hover del menú */
+nav ul li a:hover {
+    color: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+    background: rgba(0, 234, 255, 0.1);
+    box-shadow: 0 0 5px var(--color-primary-light);
+}
+
+
+/* Contenido principal */
+main {
+    padding: 50px 8%;
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto;    /* Centra el contenido */
+}
+
+
+/* Cada sección de la página */
+section {
+    padding: 30px; /* Espacio interno */
+    margin-bottom: 40px;
+    background: var(--color-module-dark);
+    border: var(--border-line);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    transition: box-shadow 0.5s ease;
+}
+
+
+/* Efecto cuando paso el mouse sobre una sección */
+section:hover {
+    box-shadow: 
+        0 0 15px var(--color-primary-light),
+        0 0 20px var(--color-secondary-accent);
+}
+
+
+/* Texto corto de la biografía */
+.Bio-brief {
+    font-size: 1.1em;
+    color: var(--color-primary-light);
+    margin-bottom: 15px;
+}
+
+
+/* Texto en negrita dentro de Bio-brief */
+.Bio-brief strong {
+    color: var(--color-secondary-accent);
+}
+
+
+/* Texto largo de la biografía */
+.Bio-large {
+    color: var(--color-text-main);
+    margin-bottom: 30px;
+}
+
+
+/* Lista de habilidades */
+.Habilitis {
+    list-style: none;
+    display: grid; /* Uso grid para organizar */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding-left: 0;
+}
+
+
+/* Cada habilidad */
+.Habilitis li {
+    padding: 15px;
+    border-left: 3px solid var(--color-secondary-accent);
+    background: rgba(26, 26, 26, 0.8);
+    transition: background 0.3s, transform 0.3s;
+}
+
+
+/* Efecto hover en habilidades */
+.Habilitis li:hover {
+    background: rgba(255, 153, 0, 0.1);
+    transform: translateX(5px); /* Se mueve a la derecha */
+    border-left-color: var(--color-primary-light);
+}
+
+
+/* Lista de proyectos */
+#Projects ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+/* Links de los proyectos */
+#Projects ul li a {
+    display: block;
+    padding: 15px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--color-text-main);
+    background: var(--color-module-dark);
+    border: 1px solid var(--color-text-muted);
+    transition: all 0.3s ease;
+}
+
+
+/* Icono antes del texto del proyecto */
+#Projects ul li a::before {
+    content: '> ';
+    color: var(--color-primary-light);
+    margin-right: 8px;
+}
+
+
+/* Hover en proyectos */
+#Projects ul li a:hover {
+    color: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+    background: rgba(0, 234, 255, 0.15);
+    transform: scale(1.01);
+}
+
+
+/* Texto de la sección contacto */
+#Contact-me p {
+    color: var(--color-text-main);
+    margin-bottom: 25px;
+}
+
+
+/* Lista de contacto */
+#Contact-me ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+/* Links de contacto */
+#Contact-me ul li a {
+    color: var(--color-primary-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    display: inline-block;
+}
+
+
+/* Hover en contacto */
+#Contact-me ul li a:hover {
+    color: var(--color-secondary-accent);
+    text-decoration: underline;
+    text-shadow: 0 0 5px var(--color-secondary-accent);
+}
+
+
+/* Media query: estilos para pantallas pequeñas (celulares) */
+@media (max-width: 768px) {
+
+    #Main-menu {
+        flex-direction: column; /* Menú en columna */
+        padding: 15px 5%;
+    }
+
+    h1 {
+        margin-bottom: 10px;
+        font-size: 1.8em;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li a {
+        margin: 5px 10px;
+    }
+
+    main {
+        padding: 30px 5%;
+    }
+
+    .Habilitis {
+        grid-template-columns: 1fr; /* Una habilidad por fila */
+    }
+}
+
+
+/* --------------------- mascotas.html --------------------- */
+
+
+.ulpets{
+    
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.ulpets img {
+    max-width: 40%;
+    height: auto;    
+    border: 2px solid var(--color-primary-light);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--color-primary-light);
+    margin: 10px;
+}
+
+
+.ulpets .textopets {
+    color: var(--color-text-main);
+    font-size: 1.2em;
+    margin-top: 15px;
+    margin-left: 25px;
+    flex: 1;
+
+}
+
+
+.lipets {
+    display: flex;
+    padding: 10px; /* Espacio interno */
+    margin-bottom: 40px;
+    background: var(--color-module-dark);
+    border: var(--border-line);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    transition: box-shadow 0.5s ease;
+}
+
+.lipets:hover {
+    box-shadow: 
+        0 0 15px var(--color-primary-light),
+        0 0 20px var(--color-secondary-accent);
+}
+
+@media (max-width: 768px) {
+
+    .ulpets {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .lipets {
+        padding: 15px;
+        flex-direction: column; /* imagen arriba */
+        align-items: center;
+        text-align: center;
+    }
+
+    .ulpets img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;   /* evita deformación */
+        border-radius: 10px;
+    
+    }
+
+    .textopets {
+        font-size: 0.9em;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+        .ulpets {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        justify-content: center;
+    }
+
+        .lipets {
+        padding: 20px;
+        flex-direction: column; /* imagen arriba */
+        align-items: center;
+        text-align: center;
+    }
+
+        .ulpets img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;   /* evita deformación */
+        border-radius: 10px;
+    }
+
+}
